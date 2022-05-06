@@ -9,21 +9,22 @@ import id.ac.ubaya.todo.R
 import id.ac.ubaya.todo.model.Todo
 import kotlinx.android.synthetic.main.todo_item_layout.view.*
 
-class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick: (Todo) -> Unit)
-    : RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
+class TodoListAdapter(val todoList:ArrayList<Todo>, val adapterOnClick: (Todo) -> Unit):
+    RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
     class TodoViewHolder(var view: View): RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.todo_item_layout ,parent, false )
 
+
         return TodoViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: TodoViewHolder, position: Int)
-    {
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int){
         val todo = todoList[position]
-//        holder.view.checkTask.setText(todoList[position].title.toString())
+
+        holder.view.checkTask.setText(todoList[position].title.toString())
         with(holder.view){
             val priority = when(todo.priority){
                 1->"Low"

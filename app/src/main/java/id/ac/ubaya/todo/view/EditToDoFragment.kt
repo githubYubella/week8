@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.todo.R
+import id.ac.ubaya.todo.model.TdoDao
 import id.ac.ubaya.todo.viewmodel.DetailTodoViewModel
 import kotlinx.android.synthetic.main.fragment_create_todo.*
 import kotlinx.android.synthetic.main.todo_item_layout.*
@@ -61,6 +62,9 @@ class EditToDoFragment : Fragment() {
             }
         }
     }
+
+
+
 
 
 }

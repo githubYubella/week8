@@ -32,7 +32,7 @@ class ListToDoViewModel(application: Application):AndroidViewModel(application),
 //                                            ToDoDatabase::class.java,
 //                                            "tododb").build()
                 val db = buildDb(getApplication())
-                todoLD.value = db.todoDao().selectAllTodo()
+                todoLD.value = db.todoDao().selectAllUndoneTodo()
 //                todoLD.value=db.todoDao().selectAllTodo()
             }
     }
@@ -45,6 +45,14 @@ class ListToDoViewModel(application: Application):AndroidViewModel(application),
 
                 db.todoDao().deleteTodo(todo)
                 todoLD.value = db.todoDao().selectAllTodo()
+            }
+        }
+
+        fun updateCheckTodo(id: Int){
+            launch {
+                val db = buildDb(getApplication())
+                db.todoDao().updateCheck(id)
+                todoLD.value = db.todoDao().selectAllUndoneTodo()
             }
         }
 }
